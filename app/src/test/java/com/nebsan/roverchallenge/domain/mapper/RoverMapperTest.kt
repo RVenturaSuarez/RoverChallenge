@@ -12,6 +12,7 @@ class RoverMapperTest {
 
     @Test
     fun `rover data is correctly mapped to rover with N direction`() {
+        // GIVEN
         val roverData = RoverData(
             topRightCorner = PositionData(x = 5, y = 5),
             roverPosition = PositionData(x = 1, y = 2),
@@ -19,8 +20,10 @@ class RoverMapperTest {
             movements = "LMLMLMLMM"
         )
 
+        // WHEN
         val rover: Rover = roverData.toDomain()
 
+        // THEN
         assertEquals(5, rover.topRightCorner.x)
         assertEquals(5, rover.topRightCorner.y)
         assertEquals(1, rover.roverPosition.x)
@@ -31,6 +34,7 @@ class RoverMapperTest {
 
     @Test
     fun `rover data is correctly mapped to rover with S direction`() {
+        // GIVEN
         val roverData = RoverData(
             topRightCorner = PositionData(x = 5, y = 5),
             roverPosition = PositionData(x = 1, y = 2),
@@ -38,8 +42,10 @@ class RoverMapperTest {
             movements = "LMLMLMLMM"
         )
 
+        // WHEN
         val rover: Rover = roverData.toDomain()
 
+        // THEN
         assertEquals(5, rover.topRightCorner.x)
         assertEquals(5, rover.topRightCorner.y)
         assertEquals(1, rover.roverPosition.x)
@@ -51,6 +57,7 @@ class RoverMapperTest {
 
     @Test
     fun `rover data is correctly mapped to rover with E direction`() {
+        // GIVEN
         val roverData = RoverData(
             topRightCorner = PositionData(x = 5, y = 5),
             roverPosition = PositionData(x = 1, y = 2),
@@ -58,8 +65,10 @@ class RoverMapperTest {
             movements = "LMLMLMLMM"
         )
 
+        // WHEN
         val rover: Rover = roverData.toDomain()
 
+        // THEN
         assertEquals(5, rover.topRightCorner.x)
         assertEquals(5, rover.topRightCorner.y)
         assertEquals(1, rover.roverPosition.x)
@@ -70,6 +79,7 @@ class RoverMapperTest {
 
     @Test
     fun `rover data is correctly mapped to rover with W direction`() {
+        // GIVEN
         val roverData = RoverData(
             topRightCorner = PositionData(x = 5, y = 5),
             roverPosition = PositionData(x = 1, y = 2),
@@ -77,8 +87,10 @@ class RoverMapperTest {
             movements = "LMLMLMLMM"
         )
 
+        // WHEN
         val rover: Rover = roverData.toDomain()
 
+        // THEN
         assertEquals(5, rover.topRightCorner.x)
         assertEquals(5, rover.topRightCorner.y)
         assertEquals(1, rover.roverPosition.x)
@@ -89,6 +101,7 @@ class RoverMapperTest {
 
     @Test
     fun `rover data is correctly mapped to rover with wrong direction`() {
+        // GIVEN
         val roverData = RoverData(
             topRightCorner = PositionData(x = 5, y = 5),
             roverPosition = PositionData(x = 1, y = 2),
@@ -96,8 +109,10 @@ class RoverMapperTest {
             movements = "LMLMLMLMM"
         )
 
+        // WHEN
         val rover: Rover = roverData.toDomain()
 
+        // THEN
         assertEquals(5, rover.topRightCorner.x)
         assertEquals(5, rover.topRightCorner.y)
         assertEquals(1, rover.roverPosition.x)

@@ -17,6 +17,7 @@ class RoverParserTest {
 
     @Test
     fun `parse json data to RoverData correctly`() {
+        // GIVEN
         val json = """
             {
                 "topRightCorner": { "x": 5, "y": 5 },
@@ -26,6 +27,7 @@ class RoverParserTest {
             }
         """.trimIndent()
 
+        // WHEN
         val result = roverParser.parseJson(json)
 
         val expectedRover = RoverData(
@@ -35,6 +37,7 @@ class RoverParserTest {
             movements = "LMLMLMLMM"
         )
 
+        // THEN
         assertEquals(result, expectedRover)
     }
 }

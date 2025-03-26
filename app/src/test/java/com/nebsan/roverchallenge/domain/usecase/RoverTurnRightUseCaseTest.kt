@@ -18,6 +18,7 @@ class RoverTurnRightUseCaseTest {
 
     @Test
     fun `rover turn right with N initial position an return E`() {
+        // GIVEN
         val rover = Rover(
             topRightCorner = Position(x = 5, y = 5),
             roverPosition = Position(x = 1, y = 2),
@@ -25,6 +26,7 @@ class RoverTurnRightUseCaseTest {
             movements = "R"
         )
 
+        // WHEN
         val result = roverTurnRightUseCase.turnRight(rover)
 
         val expectedRover = Rover(
@@ -34,11 +36,13 @@ class RoverTurnRightUseCaseTest {
             movements = "R"
         )
 
+        // THEN
         assertEquals(result, expectedRover)
     }
 
     @Test
     fun `rover turn right with S initial position an return W`() {
+        // GIVEN
         val rover = Rover(
             topRightCorner = Position(x = 5, y = 5),
             roverPosition = Position(x = 1, y = 2),
@@ -46,6 +50,7 @@ class RoverTurnRightUseCaseTest {
             movements = "R"
         )
 
+        // WHEN
         val result = roverTurnRightUseCase.turnRight(rover)
 
         val expectedRover = Rover(
@@ -55,11 +60,13 @@ class RoverTurnRightUseCaseTest {
             movements = "R"
         )
 
+        // THEN
         assertEquals(result, expectedRover)
     }
 
     @Test
     fun `rover turn right with E initial position an return S`() {
+        // GIVEN
         val rover = Rover(
             topRightCorner = Position(x = 5, y = 5),
             roverPosition = Position(x = 1, y = 2),
@@ -67,6 +74,7 @@ class RoverTurnRightUseCaseTest {
             movements = "R"
         )
 
+        // WHEN
         val result = roverTurnRightUseCase.turnRight(rover)
 
         val expectedRover = Rover(
@@ -76,11 +84,13 @@ class RoverTurnRightUseCaseTest {
             movements = "R"
         )
 
+        // THEN
         assertEquals(result, expectedRover)
     }
 
     @Test
     fun `rover turn right with W initial position an return N`() {
+        // GIVEN
         val rover = Rover(
             topRightCorner = Position(x = 5, y = 5),
             roverPosition = Position(x = 1, y = 2),
@@ -88,6 +98,7 @@ class RoverTurnRightUseCaseTest {
             movements = "R"
         )
 
+        // WHEN
         val result = roverTurnRightUseCase.turnRight(rover)
 
         val expectedRover = Rover(
@@ -97,6 +108,7 @@ class RoverTurnRightUseCaseTest {
             movements = "R"
         )
 
+        // THEN
         assertEquals(result, expectedRover)
     }
 

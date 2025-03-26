@@ -22,6 +22,7 @@ class RoverUseCaseTest {
 
     @Test
     fun `rover complete the movements correctly`() {
+        // GIVEN
         val rover = Rover(
             topRightCorner = Position(x = 5, y = 5),
             roverPosition = Position(x = 1, y = 2),
@@ -29,6 +30,7 @@ class RoverUseCaseTest {
             movements = "LMLMLMLMM"
         )
 
+        // WHEN
         var result = rover
 
         rover.movements.forEach { movement ->
@@ -42,11 +44,13 @@ class RoverUseCaseTest {
             movements = "LMLMLMLMM"
         )
 
+        // THEN
         assertEquals(result, expectedRover)
     }
 
     @Test
     fun `rover complete the movements correctly with other movements`() {
+        // GIVEN
         val rover = Rover(
             topRightCorner = Position(x = 5, y = 5),
             roverPosition = Position(x = 1, y = 2),
@@ -54,6 +58,7 @@ class RoverUseCaseTest {
             movements = "RMRMRMRMM"
         )
 
+        // WHEN
         var result = rover
 
         rover.movements.forEach { movement ->
@@ -67,11 +72,13 @@ class RoverUseCaseTest {
             movements = "RMRMRMRMM"
         )
 
+        // THEN
         assertEquals(result, expectedRover)
     }
 
     @Test
     fun `rover ignore wrong movements`() {
+        // GIVEN
         val rover = Rover(
             topRightCorner = Position(x = 5, y = 5),
             roverPosition = Position(x = 1, y = 2),
@@ -79,6 +86,7 @@ class RoverUseCaseTest {
             movements = "LMXLMJLMZLMM"
         )
 
+        // WHEN
         var result = rover
 
         rover.movements.forEach { movement ->
@@ -92,6 +100,7 @@ class RoverUseCaseTest {
             movements = "LMXLMJLMZLMM"
         )
 
+        // THEN
         assertEquals(result, expectedRover)
 
     }

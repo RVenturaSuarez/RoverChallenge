@@ -22,6 +22,7 @@ class GetRoverDataUseCaseTest {
 
     @Test
     fun `get rover data correctly from JSON`() {
+        // GIVEN
         val expectedRover = Rover(
             topRightCorner = Position(x = 5, y = 5),
             roverPosition = Position(x = 1, y = 2),
@@ -29,10 +30,12 @@ class GetRoverDataUseCaseTest {
             movements = "LMLMLMLMM"
         )
 
+        // WHEN
         every { getRoverDataUseCase.getRoverData() } returns expectedRover
 
         val result = getRoverDataUseCase.getRoverData()
 
+        // THEN
         assertEquals(result, expectedRover)
     }
 }

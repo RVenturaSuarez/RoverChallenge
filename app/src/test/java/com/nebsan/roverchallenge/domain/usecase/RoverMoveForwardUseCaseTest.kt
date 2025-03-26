@@ -19,6 +19,7 @@ class RoverMoveForwardUseCaseTest {
 
     @Test
     fun `rover move forward correctly with N direction`() {
+        // GIVEN
         val rover = Rover(
             topRightCorner = Position(x = 5, y = 5),
             roverPosition = Position(x = 1, y = 2),
@@ -26,6 +27,7 @@ class RoverMoveForwardUseCaseTest {
             movements = "M"
         )
 
+        // WHEN
         val result = roverMoveForwardUseCase.moveForward(rover)
 
         val expectedRover = Rover(
@@ -35,11 +37,13 @@ class RoverMoveForwardUseCaseTest {
             movements = "M"
         )
 
+        // THEN
         assertEquals(result, expectedRover)
     }
 
     @Test
     fun `rover move forward correctly with S direction`() {
+        // GIVEN
         val rover = Rover(
             topRightCorner = Position(x = 5, y = 5),
             roverPosition = Position(x = 1, y = 2),
@@ -47,6 +51,7 @@ class RoverMoveForwardUseCaseTest {
             movements = "M"
         )
 
+        // WHEN
         val result = roverMoveForwardUseCase.moveForward(rover)
 
         val expectedRover = Rover(
@@ -56,11 +61,13 @@ class RoverMoveForwardUseCaseTest {
             movements = "M"
         )
 
+        // THEN
         assertEquals(result, expectedRover)
     }
 
     @Test
     fun `rover move forward correctly with E direction`() {
+        // GIVEN
         val rover = Rover(
             topRightCorner = Position(x = 5, y = 5),
             roverPosition = Position(x = 1, y = 2),
@@ -68,6 +75,7 @@ class RoverMoveForwardUseCaseTest {
             movements = "M"
         )
 
+        // WHEN
         val result = roverMoveForwardUseCase.moveForward(rover)
 
         val expectedRover = Rover(
@@ -77,11 +85,13 @@ class RoverMoveForwardUseCaseTest {
             movements = "M"
         )
 
+        // THEN
         assertEquals(result, expectedRover)
     }
 
     @Test
     fun `rover move forward correctly with W direction`() {
+        // GIVEN
         val rover = Rover(
             topRightCorner = Position(x = 5, y = 5),
             roverPosition = Position(x = 1, y = 2),
@@ -89,6 +99,7 @@ class RoverMoveForwardUseCaseTest {
             movements = "M"
         )
 
+        // WHEN
         val result = roverMoveForwardUseCase.moveForward(rover)
 
         val expectedRover = Rover(
@@ -98,12 +109,14 @@ class RoverMoveForwardUseCaseTest {
             movements = "M"
         )
 
+        // THEN
         assertEquals(result, expectedRover)
     }
 
 
     @Test
     fun `rover does not move because it will be outside plateau bounds`() {
+        // GIVEN
         val rover = Rover(
             topRightCorner = Position(x = 5, y = 5),
             roverPosition = Position(x = 1, y = 5),
@@ -111,6 +124,7 @@ class RoverMoveForwardUseCaseTest {
             movements = "M"
         )
 
+        // WHEN
         val result = roverMoveForwardUseCase.moveForward(rover)
 
         val expectedRover = Rover(
@@ -120,6 +134,7 @@ class RoverMoveForwardUseCaseTest {
             movements = "M"
         )
 
+        // THEN
         assertEquals(result, expectedRover)
     }
 
