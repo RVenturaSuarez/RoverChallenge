@@ -57,11 +57,14 @@ dependencies {
     // Dagger Hilt
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
+    implementation(libs.androidx.hilt.navigation.compose)
 
     // Retrofit
     implementation(libs.retrofit2.retrofit)
     implementation(libs.retrofit2.converter.gson)
-    implementation(libs.androidx.hilt.navigation.compose)
+
+    // Window Size
+    implementation(libs.androidx.window.size)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

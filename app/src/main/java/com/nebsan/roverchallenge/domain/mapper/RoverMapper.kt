@@ -1,10 +1,9 @@
 package com.nebsan.roverchallenge.domain.mapper
 
 import com.nebsan.roverchallenge.data.model.PositionData
-import com.nebsan.roverchallenge.data.model.DirectionData
 import com.nebsan.roverchallenge.data.model.RoverData
-import com.nebsan.roverchallenge.domain.model.Position
 import com.nebsan.roverchallenge.domain.model.Direction
+import com.nebsan.roverchallenge.domain.model.Position
 import com.nebsan.roverchallenge.domain.model.Rover
 
 object RoverMapper {
@@ -13,7 +12,7 @@ object RoverMapper {
         return Rover(
             topRightCorner = topRightCorner.toDomain(),
             roverPosition = roverPosition.toDomain(),
-            roverDirection = roverDirection.toDomain(),
+            roverDirection = roverDirectionToDomain(roverDirection),
             movements = movements
         )
     }
@@ -22,7 +21,7 @@ object RoverMapper {
         return Position(x = x, y = y)
     }
 
-    private fun DirectionData.toDomain(): Direction {
+    private fun roverDirectionToDomain(direction: String): Direction {
         return when (direction) {
             "N" -> Direction.N
             "S" -> Direction.S

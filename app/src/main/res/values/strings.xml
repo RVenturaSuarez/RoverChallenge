@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">RoverChallenge</string>
+
+    <!-- Titles -->
+    <string name="movements_title">Movements:</string>
+
+    <!-- Rover Card Info -->
+    <string name="top_right_corner">Top right corner: x=%1$s | y=%2$s</string>
+    <string name="rover_position">Rover position: x=%1$s | y=%2$s</string>
+    <string name="rover_direction">Rover direction: %1$s</string>
+
+    <!-- Button Actions -->
+    <string name="load_info">Load info</string>
+    <string name="move_rover">Move rover</string>
+    <string name="reset_info">Reset info</string>
+
+    <!-- Message Snackbar -->
+    <string name="load_info_success">Data uploaded</string>
+    <string name="load_info_failure">Error retrieving data</string>
+
+    <!-- Content descriptions -->
+    <string name="content_desc_rove">Rover image</string>
+
 </resources>

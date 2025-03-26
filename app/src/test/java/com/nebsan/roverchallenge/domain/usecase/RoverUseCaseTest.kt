@@ -3,6 +3,8 @@ package com.nebsan.roverchallenge.domain.usecase
 import com.nebsan.roverchallenge.domain.model.Direction
 import com.nebsan.roverchallenge.domain.model.Position
 import com.nebsan.roverchallenge.domain.model.Rover
+import com.nebsan.roverchallenge.domain.repository.RoverRepository
+import io.mockk.mockk
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
@@ -10,10 +12,11 @@ import org.junit.Test
 class RoverUseCaseTest {
 
     private lateinit var roverUseCase: RoverUseCase
+    private val roverRepository : RoverRepository = mockk()
 
     @Before
     fun setUp() {
-        roverUseCase = RoverUseCase()
+        roverUseCase = RoverUseCase(roverRepository)
     }
 
     @Test

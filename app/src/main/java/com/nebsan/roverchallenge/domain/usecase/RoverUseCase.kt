@@ -3,10 +3,12 @@ package com.nebsan.roverchallenge.domain.usecase
 import com.nebsan.roverchallenge.domain.model.Direction
 import com.nebsan.roverchallenge.domain.model.Position
 import com.nebsan.roverchallenge.domain.model.Rover
+import com.nebsan.roverchallenge.domain.repository.RoverRepository
+import javax.inject.Inject
 
-class RoverUseCase {
+class RoverUseCase @Inject constructor(private val roverRepository: RoverRepository) {
 
-    fun executeRoverMovements(rover: Rover) : Rover {
+    fun executeRoverMovements(rover: Rover): Rover {
         var updatedRover = rover
 
         rover.movements.forEach { movement ->
@@ -20,9 +22,22 @@ class RoverUseCase {
         return updatedRover
     }
 
+    fun executeSingleMovement(currentRover: Rover, movement: Char): Rover {
+        var updatedRover = currentRover
 
-    private fun turnLeft(rover: Rover) : Rover {
-        val newDirection = when(rover.roverDirection) {
+        updatedRover = when (movement) {
+            'L' -> turnLeft(updatedRover)
+            'R' -> turnRight(updatedRover)
+            'M' -> moveForward(updatedRover)
+            else -> updatedRover
+        }
+
+        return updatedRover
+    }
+
+
+    private fun turnLeft(rover: Rover): Rover {
+        val newDirection = when (rover.roverDirection) {
             Direction.N -> Direction.W
             Direction.S -> Direction.E
             Direction.E -> Direction.N
@@ -31,8 +46,8 @@ class RoverUseCase {
         return rover.copy(roverDirection = newDirection)
     }
 
-    private fun turnRight(rover: Rover) : Rover {
-        val newDirection = when(rover.roverDirection) {
+    private fun turnRight(rover: Rover): Rover {
+        val newDirection = when (rover.roverDirection) {
             Direction.N -> Direction.E
             Direction.S -> Direction.W
             Direction.E -> Direction.S
