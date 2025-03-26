@@ -1,6 +1,5 @@
 package com.nebsan.roverchallenge.data.repository
 
-import com.nebsan.roverchallenge.data.model.DirectionData
 import com.nebsan.roverchallenge.data.model.PositionData
 import com.nebsan.roverchallenge.data.model.RoverData
 import org.junit.Assert.assertEquals
@@ -22,7 +21,7 @@ class RoverParserTest {
             {
                 "topRightCorner": { "x": 5, "y": 5 },
                 "roverPosition": { "x": 1, "y": 2 },
-                "roverDirection": { "direction": "N" },
+                "roverDirection": "N",
                 "movements": "LMLMLMLMM"
             }
         """.trimIndent()
@@ -32,7 +31,7 @@ class RoverParserTest {
         val expectedRover = RoverData(
             topRightCorner = PositionData(x = 5, y = 5),
             roverPosition = PositionData(x = 1, y = 2),
-            roverDirection = DirectionData("N"),
+            roverDirection = "N",
             movements = "LMLMLMLMM"
         )
 

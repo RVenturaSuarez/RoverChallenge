@@ -3,129 +3,22 @@ package com.nebsan.roverchallenge.domain.usecase
 import com.nebsan.roverchallenge.domain.model.Direction
 import com.nebsan.roverchallenge.domain.model.Position
 import com.nebsan.roverchallenge.domain.model.Rover
-import com.nebsan.roverchallenge.domain.repository.RoverRepository
-import io.mockk.mockk
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 
 class RoverUseCaseTest {
 
-    private lateinit var roverUseCase: RoverUseCase
-    private val roverRepository : RoverRepository = mockk()
+    private lateinit var roverMovementsUseCase: RoverUseCase
 
     @Before
     fun setUp() {
-        roverUseCase = RoverUseCase(roverRepository)
+        roverMovementsUseCase = RoverUseCase(
+            RoverTurnLeftUseCase(),
+            RoverTurnRightUseCase(),
+            RoverMoveForwardUseCase()
+        )
     }
-
-    @Test
-    fun `rover turn left correctly`() {
-        val rover = Rover(
-            topRightCorner = Position(x = 5, y = 5),
-            roverPosition = Position(x = 1, y = 2),
-            roverDirection = Direction.N,
-            movements = "L"
-        )
-
-        val result = roverUseCase.executeRoverMovements(rover)
-
-        val expectedRover = Rover(
-            topRightCorner = Position(x = 5, y = 5),
-            roverPosition = Position(x = 1, y = 2),
-            roverDirection = Direction.W,
-            movements = "L"
-        )
-
-        assertEquals(result, expectedRover)
-    }
-
-    @Test
-    fun `rover turn right correctly`() {
-        val rover = Rover(
-            topRightCorner = Position(x = 5, y = 5),
-            roverPosition = Position(x = 1, y = 2),
-            roverDirection = Direction.N,
-            movements = "R"
-        )
-
-        val result = roverUseCase.executeRoverMovements(rover)
-
-        val expectedRover = Rover(
-            topRightCorner = Position(x = 5, y = 5),
-            roverPosition = Position(x = 1, y = 2),
-            roverDirection = Direction.E,
-            movements = "R"
-        )
-
-        assertEquals(result, expectedRover)
-    }
-
-    @Test
-    fun `rover move forward correctly`() {
-        val rover = Rover(
-            topRightCorner = Position(x = 5, y = 5),
-            roverPosition = Position(x = 1, y = 2),
-            roverDirection = Direction.N,
-            movements = "M"
-        )
-
-        val result = roverUseCase.executeRoverMovements(rover)
-
-        val expectedRover = Rover(
-            topRightCorner = Position(x = 5, y = 5),
-            roverPosition = Position(x = 1, y = 3),
-            roverDirection = Direction.N,
-            movements = "M"
-        )
-
-        assertEquals(result, expectedRover)
-    }
-
-    @Test
-    fun `rover does not move because it will be outside plateau bounds`() {
-        val rover = Rover(
-            topRightCorner = Position(x = 5, y = 5),
-            roverPosition = Position(x = 1, y = 5),
-            roverDirection = Direction.N,
-            movements = "M"
-        )
-
-        val result = roverUseCase.executeRoverMovements(rover)
-
-        val expectedRover = Rover(
-            topRightCorner = Position(x = 5, y = 5),
-            roverPosition = Position(x = 1, y = 5),
-            roverDirection = Direction.N,
-            movements = "M"
-        )
-
-        assertEquals(result, expectedRover)
-    }
-
-
-    @Test
-    fun `rover ignore wrong movements`() {
-        val rover = Rover(
-            topRightCorner = Position(x = 5, y = 5),
-            roverPosition = Position(x = 1, y = 2),
-            roverDirection = Direction.N,
-            movements = "LMXLMJLMZLMM"
-        )
-
-        val result = roverUseCase.executeRoverMovements(rover)
-
-        val expectedRover = Rover(
-            topRightCorner = Position(x = 5, y = 5),
-            roverPosition = Position(x = 1, y = 3),
-            roverDirection = Direction.N,
-            movements = "LMXLMJLMZLMM"
-        )
-
-        assertEquals(result, expectedRover)
-
-    }
-
 
     @Test
     fun `rover complete the movements correctly`() {
@@ -136,7 +29,11 @@ class RoverUseCaseTest {
             movements = "LMLMLMLMM"
         )
 
-        val result = roverUseCase.executeRoverMovements(rover)
+        var result = rover
+
+        rover.movements.forEach { movement ->
+            result = roverMovementsUseCase.executeMovement(rover, movement)
+        }
 
         val expectedRover = Rover(
             topRightCorner = Position(x = 5, y = 5),
@@ -149,7 +46,7 @@ class RoverUseCaseTest {
     }
 
     @Test
-    fun `rover complete the movements correctly with right movements`() {
+    fun `rover complete the movements correctly with other movements`() {
         val rover = Rover(
             topRightCorner = Position(x = 5, y = 5),
             roverPosition = Position(x = 1, y = 2),
@@ -157,7 +54,11 @@ class RoverUseCaseTest {
             movements = "RMRMRMRMM"
         )
 
-        val result = roverUseCase.executeRoverMovements(rover)
+        var result = rover
+
+        rover.movements.forEach { movement ->
+            result = roverMovementsUseCase.executeMovement(rover, movement)
+        }
 
         val expectedRover = Rover(
             topRightCorner = Position(x = 5, y = 5),
@@ -167,6 +68,32 @@ class RoverUseCaseTest {
         )
 
         assertEquals(result, expectedRover)
+    }
+
+    @Test
+    fun `rover ignore wrong movements`() {
+        val rover = Rover(
+            topRightCorner = Position(x = 5, y = 5),
+            roverPosition = Position(x = 1, y = 2),
+            roverDirection = Direction.N,
+            movements = "LMXLMJLMZLMM"
+        )
+
+        var result = rover
+
+        rover.movements.forEach { movement ->
+            result = roverMovementsUseCase.executeMovement(rover, movement)
+        }
+
+        val expectedRover = Rover(
+            topRightCorner = Position(x = 5, y = 5),
+            roverPosition = Position(x = 1, y = 3),
+            roverDirection = Direction.N,
+            movements = "LMXLMJLMZLMM"
+        )
+
+        assertEquals(result, expectedRover)
+
     }
 
 }

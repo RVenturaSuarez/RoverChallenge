@@ -52,7 +52,7 @@ class RoverViewModel @Inject constructor(
                 isRoverInMovement.value = true
                 for ((index, movement) in roverInfo.movements.withIndex()) {
                     currentMovementIndex.intValue = index
-                    val updatedRover = roverUseCase.executeSingleMovement(rover.value!!, movement)
+                    val updatedRover = roverUseCase.executeMovement(rover.value!!, movement)
                     rover.value = updatedRover
                     delay(1500L)
                 }

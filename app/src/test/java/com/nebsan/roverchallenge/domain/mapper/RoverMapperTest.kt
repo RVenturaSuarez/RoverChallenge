@@ -1,6 +1,5 @@
 package com.nebsan.roverchallenge.domain.mapper
 
-import com.nebsan.roverchallenge.data.model.DirectionData
 import com.nebsan.roverchallenge.data.model.PositionData
 import com.nebsan.roverchallenge.data.model.RoverData
 import com.nebsan.roverchallenge.domain.mapper.RoverMapper.toDomain
@@ -16,7 +15,7 @@ class RoverMapperTest {
         val roverData = RoverData(
             topRightCorner = PositionData(x = 5, y = 5),
             roverPosition = PositionData(x = 1, y = 2),
-            roverDirection = DirectionData("N"),
+            roverDirection = "N",
             movements = "LMLMLMLMM"
         )
 
@@ -35,7 +34,7 @@ class RoverMapperTest {
         val roverData = RoverData(
             topRightCorner = PositionData(x = 5, y = 5),
             roverPosition = PositionData(x = 1, y = 2),
-            roverDirection = DirectionData("S"),
+            roverDirection = "S",
             movements = "LMLMLMLMM"
         )
 
@@ -55,7 +54,7 @@ class RoverMapperTest {
         val roverData = RoverData(
             topRightCorner = PositionData(x = 5, y = 5),
             roverPosition = PositionData(x = 1, y = 2),
-            roverDirection = DirectionData("E"),
+            roverDirection = "E",
             movements = "LMLMLMLMM"
         )
 
@@ -74,7 +73,7 @@ class RoverMapperTest {
         val roverData = RoverData(
             topRightCorner = PositionData(x = 5, y = 5),
             roverPosition = PositionData(x = 1, y = 2),
-            roverDirection = DirectionData("W"),
+            roverDirection = "W",
             movements = "LMLMLMLMM"
         )
 
@@ -93,7 +92,7 @@ class RoverMapperTest {
         val roverData = RoverData(
             topRightCorner = PositionData(x = 5, y = 5),
             roverPosition = PositionData(x = 1, y = 2),
-            roverDirection = DirectionData("Z"),
+            roverDirection = "Z",
             movements = "LMLMLMLMM"
         )
 
