@@ -17,11 +17,13 @@ class RoverRepositoryImplTest {
 
     private lateinit var roverRepository: RoverRepository
     private lateinit var context: Context
+    private lateinit var roverParser: RoverParser
 
     @Before
     fun setUp() {
         context = InstrumentationRegistry.getInstrumentation().targetContext
-        roverRepository = RoverRepositoryImpl(context)
+        roverParser = RoverParser()
+        roverRepository = RoverRepositoryImpl(context, roverParser)
     }
 
     @Test

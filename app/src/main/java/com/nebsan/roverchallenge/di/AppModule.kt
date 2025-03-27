@@ -1,6 +1,7 @@
 package com.nebsan.roverchallenge.di
 
 import android.content.Context
+import com.nebsan.roverchallenge.data.repository.RoverParser
 import com.nebsan.roverchallenge.data.repository.RoverRepositoryImpl
 import com.nebsan.roverchallenge.domain.repository.RoverRepository
 import dagger.Module
@@ -16,7 +17,13 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideRoverRepository(@ApplicationContext appContext: Context): RoverRepository {
-        return RoverRepositoryImpl(appContext)
+    fun provideRoverRepository(
+        @ApplicationContext appContext: Context,
+        roverParser: RoverParser,
+    ): RoverRepository {
+        return RoverRepositoryImpl(appContext, roverParser)
     }
+
+    @Provides
+    fun provideRoverParser(): RoverParser = RoverParser()
 }
