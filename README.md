@@ -98,6 +98,7 @@ This project includes a GitHub Actions workflow for automated testing. It runs t
 
 ## 📸 Screenshots
 
-
+![Demo](assets/landscapeRoverScreen.png)
+![Demo](assets/resizeRoverScreen.gif)
 
 
